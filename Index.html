@@ -326,6 +326,10 @@
             line-height: 1.6;
         }
 
+        <audio id="takbeerAudio" loop>
+  <source src="takbirat.mp3" type="audio/mpeg">
+</audio>
+        
         /* Footer */
         footer {
             border-top: 1px solid rgba(217, 119, 6, 0.1);
@@ -516,11 +520,18 @@
             return `${mins}:${secs.toString().padStart(2, '0')}`;
         }
 
-        // Toggle play/pause
-        function togglePlay() {
-            const btn = document.getElementById('playBtn');
-            btn.textContent = btn.textContent === '▶' ? '⏸' : '▶';
-        }
+   function togglePlay() {
+    const audio = document.getElementById('takbeerAudio');
+    const btn = document.getElementById('playBtn');
+
+    if (audio.paused) {
+        audio.play();
+        btn.textContent = '⏸';
+    } else {
+        audio.pause();
+        btn.textContent = '▶';
+    }
+}
 
         // Seek audio
         function seekAudio(event) {
